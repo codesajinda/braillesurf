@@ -45,5 +45,19 @@ var app = {
         receivedElement.setAttribute('style', 'display:block;');
 
         console.log('Received Event: ' + id);
+        var result = null;
+        $.ajax({
+              method: "POST",
+              url: 'http://www.csmasterpiece.com/reader/BrailleSurf.php',
+              data:{action:'GetKey'},
+              async:false,
+              contentType: "application/json"
+            })
+            .done(function(msg) {
+              alert(msg);
+            }).fail(function(xhr, textStatus, errorThrown) {
+              alert(textStatus);
+              alert(errorThrown);
+            });
     }
 };
