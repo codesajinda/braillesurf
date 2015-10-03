@@ -49,12 +49,12 @@ var app = {
         $.ajax({
               method: "POST",
               url: 'http://www.csmasterpiece.com/reader/BrailleSurf.php',
-              data:{action:'GetKey'},
-              contentType: "application/json"
+              data:{action:'GetKey'}
             })
             .done(function(msg) {
               alert(msg);
             }).fail(function(xhr, textStatus, errorThrown) {
+            alert(xhr);
               alert(textStatus);
               alert(errorThrown);
             });
