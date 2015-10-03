@@ -57,6 +57,7 @@ var app = {
             }
         }
         xhttp.open("POST", "http://www.csmasterpiece.com/reader/BrailleSurf.php", true);
-        xhttp.send();       
+        xmlhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+        xmlhttp.send(JSON.stringify({action:"GetKey"}));
     }
 };
