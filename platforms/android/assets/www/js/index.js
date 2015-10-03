@@ -50,7 +50,6 @@ var app = {
               method: "POST",
               url: 'http://www.csmasterpiece.com/reader/BrailleSurf.php',
               data:{action:'GetKey'},
-              async:false,
               contentType: "application/json"
             })
             .done(function(msg) {
