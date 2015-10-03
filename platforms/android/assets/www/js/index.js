@@ -46,17 +46,17 @@ var app = {
 
         console.log('Received Event: ' + id);
         var result = null;
-        $.ajax({
-              method: "POST",
-              url: 'http://www.csmasterpiece.com/reader/BrailleSurf.php',
-              data:{action:'GetKey'}
-            })
-            .done(function(msg) {
-              alert(msg);
-            }).fail(function(xhr, textStatus, errorThrown) {
-            alert(xhr);
-              alert(textStatus);
-              alert(errorThrown);
-            });
+
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function() {
+            if (xhttp.readyState == 4 && xhttp.status == 200) {
+                alert(xhttp.responseText);
+            }
+            else{
+                alert('not found');
+            }
+        }
+        xhttp.open("POST", "http://www.csmasterpiece.com/reader/BrailleSurf.php", true);
+        xhttp.send();       
     }
 };
