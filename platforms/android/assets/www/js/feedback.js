@@ -1,5 +1,6 @@
 var feedback = {
   completeUrl:null,
+  myMedia:null,
   androidPath:'/android_asset/www/sounds/',
   screenStateVoiceMessages:['alphabetKeyboard',  'punctuationKeyboard', 'numberKeyboard', 'basicActions', 'bookmarks', 'history'],
   voiceMessages:['sorryIDidNotGetYou', 'deletedLastLetter'],
@@ -15,10 +16,8 @@ var feedback = {
     feedback.playMediaFile(this.completeUrl);        
   },
   playMediaFile:function(url){ 
-    var temp = 'file://' + url;
-    var myMedia = new Media(temp, onSuccess, onError);
-    myMedia.play();  
-    myMedia.release();
+    feedback.myMedia = new Media(url, feedback.onSuccess, feedback.onError);
+    feedback.myMedia.play();  
   },
   playVoiceMessage:function(index){
     feedback.playAudio(this.voiceMessages[index], 'general');
@@ -26,8 +25,8 @@ var feedback = {
   playVoiceScreenState:function(index){ 
     feedback.playAudio(this.screenStateVoiceMessages[index], 'general');
   },
-  onSuccess:function() {   
-      console.log("playAudio():Audio Success");
+  onSuccess:function() {
+    feedback.myMedia.release();
   },
   onError:function(error) {
     alert("error");
