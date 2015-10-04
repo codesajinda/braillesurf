@@ -45,19 +45,23 @@ var app = {
         receivedElement.setAttribute('style', 'display:block;');
 
         console.log('Received Event: ' + id);
-        var result = null;
-
-        var xhttp = new XMLHttpRequest();
-        xhttp.onreadystatechange = function() {
-            if (xhttp.readyState == 4 && xhttp.status == 200) {
-                alert(xhttp.responseText);
-            }
-            else{
-                alert('not found');
-            }
-        }
-        xhttp.open("POST", "http://www.csmasterpiece.com/reader/BrailleSurf.php");
-        xmlhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
-        xmlhttp.send(JSON.stringify({action:"GetKey"}));
+        $.ajax({
+          method: "POST",
+          url: url,
+          dataType: 'json',
+          crossDomain: true
+        })
+        .done(function(msg) {
+          alert(msg);
+          result = JSON.parse(msg);
+          if(result.error != null){
+            feedback.playAudio('error', result.error);
+            result = null;
+          }
+        }).fail(function(xhr, textStatus, errorThrown) {
+          alert(textStatus);
+          alert(errorThrown);
+          feedback.beep();
+        });
     }
 };
