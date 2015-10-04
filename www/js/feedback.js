@@ -41,10 +41,8 @@ var feedback = {
       });      
     }
     else{
-        var tempUrl = 'file://' + url;        
-        alert(tempUrl);
-        var media = new Media(tempUrl, feedback.onSuccess, feedback.onError);
-        media.play();
+        feedback.myMedia = new Media(url, feedback.onSuccess, feedback.onError);
+        feedback.myMedia.play();
     }
   },
   pauseMediaFile:function(){
