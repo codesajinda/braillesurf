@@ -47,21 +47,14 @@ var app = {
         console.log('Received Event: ' + id);
         $.ajax({
           method: "POST",
-          url: url,
-          dataType: 'json',
-          crossDomain: true
+          url: 'http://www.csmasterpiece.com/reader/BrailleSurf.php',
+          data:{action:'GetKey'}
         })
         .done(function(msg) {
           alert(msg);
-          result = JSON.parse(msg);
-          if(result.error != null){
-            feedback.playAudio('error', result.error);
-            result = null;
-          }
         }).fail(function(xhr, textStatus, errorThrown) {
           alert(textStatus);
           alert(errorThrown);
-          feedback.beep();
         });
     }
 };
