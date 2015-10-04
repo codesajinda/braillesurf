@@ -127,6 +127,7 @@ var app = {
                     else{
                       lastChange = lastChange + 1;
                     }
+                    alert(lastChange);
                     playVoiceOnKeyboardChange(lastChange);
                  }
                }
