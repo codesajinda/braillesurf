@@ -17,32 +17,17 @@ var feedback = {
     feedback.playMediaFile(this.completeUrl);        
   },
   playMediaFile:function(url){ 
-    feedback.myMedia = new Media(url, feedback.onSuccess, feedback.onError);
-    feedback.myMedia.getCurrentPosition(function(position){
-      alert(feedback.isAudioPaused);
-      alert(position);
-      if(feedback.isAudioPaused != false){
-         if (position > -0.01) {
-            alert(position);
-            feedback.stopMediaFile();
-            feedback.myMedia = new Media(url, feedback.onSuccess, feedback.onError);
-            feedback.myMedia.play();
-         }
-         else{
-            feedback.myMedia = new Media(url, feedback.onSuccess, feedback.onError);
-            feedback.myMedia.play();
-         }
-     }
-     else{
-        feedback.myMedia.play();
-     }
-
+    //If the audio hasnt been paused
+    if(feedback.isAudioPaused == false){
+      feedback.myMedia = new Media(url, feedback.onSuccess, feedback.onError);
+    }
+    feedback.myMedia.getCurrentPosition(function(position){       
+      feedback.myMedia.play();
     }, function(){
         feedback.beep();
     }); 
   },
   pauseMediaFile:function(){
-    alert("pausing");
     feedback.isAudioPaused = true;
     feedback.myMedia.pause();
   },
