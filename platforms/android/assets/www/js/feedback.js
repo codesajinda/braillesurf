@@ -65,7 +65,7 @@ var feedback = {
   },
   onError:function(error) {
      alert("Aborted" + error.MEDIA_ERR_ABORTED);
-     alert("Network" + error..MEDIA_ERR_NETWORK);
+     alert("Network" + error.MEDIA_ERR_NETWORK);
      alert("Decode" + error.MEDIA_ERR_DECODE);
      alert("None" + error.MEDIA_ERR_NONE_SUPPORTED);
     feedback.beep();
