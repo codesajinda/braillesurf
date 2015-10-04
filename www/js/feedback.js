@@ -1,7 +1,6 @@
 var feedback = {
   myMedia:null,
   completeUrl:null,
-  isAudioPaused:false,
   androidPath:'/android_asset/www/sounds/',
   screenStateVoiceMessages:['alphabetKeyboard',  'punctuationKeyboard', 'numberKeyboard', 'basicActions', 'bookmarks', 'history'],
   voiceMessages:['sorryIDidNotGetYou', 'deletedLastLetter'],
@@ -17,25 +16,20 @@ var feedback = {
     feedback.playMediaFile(this.completeUrl);        
   },
   playMediaFile:function(url){ 
-    alert(url);
-    alert(feedback.myMedia);
-    //If the audio hasnt been paused
-    if(feedback.isAudioPaused == false){
-      feedback.myMedia = new Media(url, feedback.onSuccess, feedback.onError);
-    }
-    feedback.myMedia.getCurrentPosition(function(position){    
-      feedback.myMedia.play();
-      alert(position);
-    }, function(){
-        feedback.beep();
-    }); 
+    // Create Media object from src
+    feedback.myMedia = new Media(url, onSuccess, onError);
+    // Play audio
+    feedback.myMedia.play();  
   },
   pauseMediaFile:function(){
-    feedback.isAudioPaused = true;
-    feedback.myMedia.pause();
+     if (feedback.myMedia) {
+         feedback.myMedia.pause();
+      }
   },
   stopMediaFile:function(){
-    feedback.myMedia.stop();
+    if (feedback.myMedia) {
+      feedback.myMedia.stop();
+    }
   },
   playVoiceMessage:function(index){
     feedback.playAudio(this.voiceMessages[index], 'general');
