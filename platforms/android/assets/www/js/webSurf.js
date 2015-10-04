@@ -4,7 +4,6 @@ var webSurf = {
   returnedHtml:null,
   key:null,
   setKey:function(){  
-    alert(storage.getItem('key'));
     if(storage.getItem('key') == null){
       var data =  {action:'GetKey'};
       var result = webSurf.postToServer(webSurf.serverPath + 'BrailleSurf.php', data);
@@ -78,7 +77,6 @@ var webSurf = {
           async:false
         })
         .done(function(msg) {
-          alert(msg);
           result = JSON.parse(msg);
           if(result.error != null){
             feedback.playAudio('error', result.error);
