@@ -74,6 +74,7 @@ var webSurf = {
     $.ajax({
           method: "POST",
           url: url,
+          data:data,
           async:false,
           contentType: "application/json"
         })
@@ -85,8 +86,6 @@ var webSurf = {
             result = null;
           }
         }).fail(function(xhr, textStatus, errorThrown) {
-          alert(textStatus);
-          alert(errorThrown);
           feedback.beep();
         });
     return result;
