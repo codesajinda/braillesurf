@@ -16,8 +16,8 @@ var feedback = {
     feedback.playMediaFile(this.completeUrl);        
   },
   playMediaFile:function(url){ 
-    feedback.myMedia = new Media(url, onSuccess, onError);
-    feedback.myMedia.play();  
+    var myMedia = new Media(url, onSuccess, onError);
+    myMedia.play();  
   },
   pauseMediaFile:function(){
      if (feedback.myMedia != null) {
@@ -39,6 +39,7 @@ var feedback = {
       console.log("playAudio():Audio Success");
   },
   onError:function(error) {
+    alert("error");
     feedback.beep();
   },
   beep:function(){
