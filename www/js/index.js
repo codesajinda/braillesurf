@@ -16,6 +16,25 @@
  * specific language governing permissions and limitations
  * under the License.
  */
+var swipeLeftString  ='left';
+var swipeRightString = 'right';
+var swipeUpString = 'up';
+var swipeDownString = 'down';
+var swipeDownLeftString = 'downleft'; 
+var swipeDownRightString = 'downright';
+var pressHoldString = 'press';
+var singleTapString = 'singleTap';
+var doubleTapString = 'doubleTap';
+var selectedActions = [];
+var wordArray = ['D','E','V', 'P', 'R', 'O', 'J', 'E', 'C', 'T', 'S', '.', 'C', 'S', 'M', 'A', 'S', 'T', 'E', 'R', 'P', 'I', 'E', 'C', 'E', '.', 'C', 'O', 'M'];
+var fingerMoves = [1,2,3,4,5];
+var singleTap = new Hammer.Tap({ event: singleTapString});
+var pressHold = new Hammer.Press({ event: pressHoldString});     
+var myElement = document.getElementById('elem1');
+var mc = new Hammer.Manager(myElement);
+var lastChange = 0;
+//Checks whether a character exists for the provided gesture
+var hasAValue = false;
 var app = {
     // Application Constructor
     initialize: function() {
@@ -36,25 +55,158 @@ var app = {
         app.receivedEvent('deviceready');
     },
     // Update DOM on a Received Event
-    receivedEvent: function(id) {
-        var parentElement = document.getElementById(id);
-        var listeningElement = parentElement.querySelector('.listening');
-        var receivedElement = parentElement.querySelector('.received');
+    receivedEvent: function() {      
+        webSurf.setKey();
+        app.appStart();
+    },
 
-        listeningElement.setAttribute('style', 'display:none;');
-        receivedElement.setAttribute('style', 'display:block;');
+    appStart: function(){    
+        mc.add([singleTap, pressHold]);
 
-        console.log('Received Event: ' + id);
-        $.ajax({
-          method: "POST",
-          url: 'http://www.csmasterpiece.com/reader/BrailleSurf.php',
-          data:{action:'GetKey'}
-        })
-        .done(function(msg) {
-          alert(msg);
-        }).fail(function(xhr, textStatus, errorThrown) {
-          alert(textStatus);
-          alert(errorThrown);
+        mc.on('singleTap press', function(ev) {
+          if(ev.type == singleTapString){
+            var singleTapObj = {};
+            singleTapObj.type = ev.type;
+            selectedActions.push(singleTapObj);
+          } 
+          if(ev.type == pressHoldString){
+            feedback.vibrate(500);
+            displayCharacter();
+            selectedActions = [];
+          }
         });
+
+
+
+        $(myElement).swipe(function(direction) {
+          switch(direction) {
+            case swipeLeftString:
+              var swipeLeftObj = {};  
+              swipeLeftObj.type = direction;  
+              selectedActions.push(swipeLeftObj);
+            break;
+            case swipeRightString:
+              var swipeRightObj = {};
+              swipeRightObj.type = direction;
+              selectedActions.push(swipeRightObj);
+            break;
+            case swipeUpString:
+              var swipeUpObj = {};  
+              swipeUpObj.type = direction; 
+              selectedActions.push(swipeUpObj);
+            break;
+            case swipeDownString: 
+              var swipeDownObj = {};
+              swipeDownObj.type = direction;
+              selectedActions.push(swipeDownObj);
+            break;
+            case swipeDownLeftString: 
+              var swipeDownLeftObj = {};
+              swipeDownLeftObj.type = direction;
+              selectedActions.push(swipeDownLeftObj);
+            break;
+            case swipeDownRightString:       
+              var swipeDownRightObj = {};
+              swipeDownRightObj.type = direction;
+              selectedActions.push(swipeDownRightObj);
+            break;
+            default:
+              feedback.playVoiceMessage(0);
+            break;
+          }
+        });
+
+        function switchKeyboards(){   
+            //If the array contains swipe up then move to the other keyboard
+            if(selectedActions.length == fingerMoves[0]){
+               if(selectedActions[0] != null && typeof (selectedActions[0]) !=='undefined'){
+                 if(selectedActions[0].type == swipeUpString){
+                    if(lastChange == 5){
+                      lastChange = 0;
+                    }
+                    else{
+                      lastChange = lastChange + 1;
+                    }
+                    playVoiceOnKeyboardChange(lastChange);
+                 }
+               }
+               selectedActions = [];
+            } 
+        }
+
+        function playVoiceOnKeyboardChange(index){
+            switch(index) {
+            case 0:
+              feedback.playVoiceScreenState(0);
+            break;
+            case 1:
+              feedback.playVoiceScreenState(1);
+            break;
+            case 2:
+              feedback.playVoiceScreenState(2);
+            break;
+            case 3:
+              feedback.playVoiceScreenState(3);
+            break;    
+            case 4:
+              feedback.playVoiceScreenState(4);
+            break;
+            case 5:
+              feedback.playVoiceScreenState(5);
+            break;    
+            default:
+            break;
+          }
+        }
+
+        function displayCharacter(){
+          switch(lastChange) {
+            case 0:
+              alphabetKeyboard.displayValue();
+              hasAValue = true;
+              break;
+            case 1:
+              punctuationKeyboard.displayValue();
+              hasAValue = true;
+              break;
+            case 2:
+              numericKeyboard.displayValue();
+              hasAValue = true;
+              break;
+            case 3:
+              basicActions.displayAction();
+              hasAValue = true;
+              break;
+            case 4:
+              bookmark.displayAction();
+              hasAValue = true;
+              break;
+            default:
+              break;
+          }
+          deleteLastEnteredText(); 
+          switchKeyboards();
+        }
+
+        function deleteLastEnteredText(){
+          //If the array contains swipe left then remove the last letter
+          if(selectedActions.length == fingerMoves[0]){
+             if(selectedActions[0] != null && typeof (selectedActions[0]) !=='undefined'){
+               if(selectedActions[0].type == swipeLeftString){
+                  wordArray.splice(wordArray.length - 1, 1)
+                  feedback.playVoiceMessage(1);
+                  basicActions.displayText();
+                  return;
+               }
+             }
+          }
+
+          if(!hasAValue){
+            //If the array doesn't contain a matching letter then play voice sorry i didn't get you
+            feedback.playVoiceMessage(0);    
+          }
+
+          hasAValue = false;
+        }
     }
 };
