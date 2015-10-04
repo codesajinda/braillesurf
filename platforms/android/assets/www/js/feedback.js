@@ -19,16 +19,6 @@ var feedback = {
     var myMedia = new Media(url, onSuccess, onError);
     myMedia.play();  
   },
-  pauseMediaFile:function(){
-     if (feedback.myMedia != null) {
-         feedback.myMedia.pause();
-      }
-  },
-  stopMediaFile:function(){
-    if (feedback.myMedia != null) {
-      feedback.myMedia.stop();
-    }
-  },
   playVoiceMessage:function(index){
     feedback.playAudio(this.voiceMessages[index], 'general');
   },
