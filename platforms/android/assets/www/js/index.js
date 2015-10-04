@@ -26,7 +26,7 @@ var pressHoldString = 'press';
 var singleTapString = 'singleTap';
 var doubleTapString = 'doubleTap';
 var selectedActions = [];
-var wordArray = ['D','E','V', 'P', 'R', 'O', 'J', 'E', 'C', 'T', 'S', '.', 'C', 'S', 'M', 'A', 'S', 'T', 'E', 'R', 'P', 'I', 'E', 'C', 'E', '.', 'C', 'O', 'M'];
+var wordArray = [];
 var fingerMoves = [1,2,3,4,5];
 var singleTap = new Hammer.Tap({ event: singleTapString});
 var pressHold = new Hammer.Press({ event: pressHoldString});     
@@ -56,7 +56,6 @@ var app = {
     },
     // Update DOM on a Received Event
     receivedEvent: function() { 
-        alert(Media);    
         webSurf.setKey();
         app.appStart();
     },

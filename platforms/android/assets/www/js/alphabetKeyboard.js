@@ -11,8 +11,8 @@ var alphabetKeyboard = {
         if(selectedActions[0] != null && typeof (selectedActions[0]) !=='undefined'){
           if(selectedActions[0].type == singleTapString){         
             //A
-            //feedback.playAudio(this.capitalAlphabet[0].letter.toLowerCase(), this.soundFolder);
-            //wordArray.push(this.capitalAlphabet[0].letter);            
+            feedback.playAudio(this.capitalAlphabet[0].letter.toLowerCase(), this.soundFolder);
+            wordArray.push(this.capitalAlphabet[0].letter);            
             basicActions.displayText();
             return;
           } 
