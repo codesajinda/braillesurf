@@ -16,35 +16,30 @@ var feedback = {
     alert(this.completeUrl);
     feedback.playMediaFile(this.completeUrl);        
   },
-  playMediaFile:function(url){   
-   if(feedback.myMedia !=  null){
-      feedback.myMedia.getCurrentPosition(function(position){
-        alert(feedback.isAudioPaused);
-        if(feedback.isAudioPaused != false){
-           if (position > -0.01) {
-              alert(position);
-              feedback.stopMediaFile();
-              feedback.myMedia = new Media(url, feedback.onSuccess, feedback.onError);
-              feedback.myMedia.play();
-           }
-           else{
-              feedback.myMedia = new Media(url, feedback.onSuccess, feedback.onError);
-              feedback.myMedia.play();
-           }
-       }
-       else{
-          feedback.myMedia.play();
-       }
-
-      }, function(){
-          feedback.beep();
-      });      
-    }
-    else{
-        alert("media null");
-        feedback.myMedia = new Media(url, feedback.onSuccess, feedback.onError);
+  playMediaFile:function(url){ 
+    feedback.myMedia = new Media(url, feedback.onSuccess, feedback.onError);
+    feedback.myMedia.getCurrentPosition(function(position){
+      alert(feedback.isAudioPaused);
+      alert(position);
+      if(feedback.isAudioPaused != false){
+         if (position > -0.01) {
+            alert(position);
+            feedback.stopMediaFile();
+            feedback.myMedia = new Media(url, feedback.onSuccess, feedback.onError);
+            feedback.myMedia.play();
+         }
+         else{
+            feedback.myMedia = new Media(url, feedback.onSuccess, feedback.onError);
+            feedback.myMedia.play();
+         }
+     }
+     else{
         feedback.myMedia.play();
-    }
+     }
+
+    }, function(){
+        feedback.beep();
+    }); 
   },
   pauseMediaFile:function(){
     alert("pausing");
