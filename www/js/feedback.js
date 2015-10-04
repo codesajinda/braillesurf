@@ -64,7 +64,10 @@ var feedback = {
       console.log("playAudio():Audio Success");
   },
   onError:function(error) {
-     alert(error);
+     alert("Aborted" + error.MEDIA_ERR_ABORTED);
+     alert("Network" + error..MEDIA_ERR_NETWORK);
+     alert("Decode" + error.MEDIA_ERR_DECODE);
+     alert("None" + error.MEDIA_ERR_NONE_SUPPORTED);
     feedback.beep();
   },
   beep:function(){
