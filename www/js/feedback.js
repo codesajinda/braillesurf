@@ -15,7 +15,8 @@ var feedback = {
     feedback.playMediaFile(this.completeUrl);        
   },
   playMediaFile:function(url){ 
-    var myMedia = new Media(url, onSuccess, onError);
+    var temp = 'file://' + url;
+    var myMedia = new Media(temp, onSuccess, onError);
     myMedia.play();  
     myMedia.release();
   },
