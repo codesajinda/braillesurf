@@ -25,7 +25,12 @@
             },
             "config.xml": {
                 "parents": {
-                    "/*": []
+                    "/*": [
+                        {
+                            "xml": "<preference name=\"AndroidPersistentFileLocation\" value=\"Internal\" />",
+                            "count": 1
+                        }
+                    ]
                 }
             },
             "AndroidManifest.xml": {
@@ -56,12 +61,12 @@
         "cordova-plugin-whitelist": {
             "PACKAGE_NAME": "com.csmasterpiece.braillesurf"
         },
-        "org.apache.cordova.media": {
+        "cordova-plugin-media": {
             "PACKAGE_NAME": "com.csmasterpiece.braillesurf"
         }
     },
     "dependent_plugins": {
-        "org.apache.cordova.file": {
+        "cordova-plugin-file": {
             "PACKAGE_NAME": "com.csmasterpiece.braillesurf"
         }
     }
