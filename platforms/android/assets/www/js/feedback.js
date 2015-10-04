@@ -17,12 +17,15 @@ var feedback = {
     feedback.playMediaFile(this.completeUrl);        
   },
   playMediaFile:function(url){ 
+    alert(url);
+    alert(feedback.myMedia);
     //If the audio hasnt been paused
     if(feedback.isAudioPaused == false){
       feedback.myMedia = new Media(url, feedback.onSuccess, feedback.onError);
     }
-    feedback.myMedia.getCurrentPosition(function(position){       
+    feedback.myMedia.getCurrentPosition(function(position){    
       feedback.myMedia.play();
+      alert(position);
     }, function(){
         feedback.beep();
     }); 
