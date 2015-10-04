@@ -75,8 +75,7 @@ var webSurf = {
           method: "POST",
           url: url,
           data:data,
-          async:false,
-          contentType: "application/json"
+          async:false
         })
         .done(function(msg) {
           alert(msg);
