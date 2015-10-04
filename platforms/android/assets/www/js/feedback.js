@@ -42,8 +42,8 @@ var feedback = {
     }
     else{
         alert("media null");
-        feedback.myMedia = new Media(url, feedback.onSuccess, feedback.onError);
-        feedback.myMedia.play();
+        var media = new Media(url, feedback.onSuccess, feedback.onError);
+        media.play();
     }
   },
   pauseMediaFile:function(){
@@ -61,6 +61,7 @@ var feedback = {
     feedback.playAudio(this.screenStateVoiceMessages[index], 'general');
   },
   onSuccess:function() {
+    alert("hello");
       console.log("playAudio():Audio Success");
   },
   onError:function(error) {
