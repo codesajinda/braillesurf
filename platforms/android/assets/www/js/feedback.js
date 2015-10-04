@@ -60,11 +60,11 @@ var feedback = {
   playVoiceScreenState:function(index){ 
     feedback.playAudio(this.screenStateVoiceMessages[index], 'general');
   },
-  onSuccess:function() {
-    alert("hello");
+  onSuccess:function() {   
       console.log("playAudio():Audio Success");
   },
   onError:function(error) {
+     alert(error);
     feedback.beep();
   },
   beep:function(){
