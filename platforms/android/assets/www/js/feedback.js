@@ -16,18 +16,16 @@ var feedback = {
     feedback.playMediaFile(this.completeUrl);        
   },
   playMediaFile:function(url){ 
-    // Create Media object from src
     feedback.myMedia = new Media(url, onSuccess, onError);
-    // Play audio
     feedback.myMedia.play();  
   },
   pauseMediaFile:function(){
-     if (feedback.myMedia) {
+     if (feedback.myMedia != null) {
          feedback.myMedia.pause();
       }
   },
   stopMediaFile:function(){
-    if (feedback.myMedia) {
+    if (feedback.myMedia != null) {
       feedback.myMedia.stop();
     }
   },
