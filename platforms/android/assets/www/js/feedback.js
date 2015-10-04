@@ -1,5 +1,4 @@
 var feedback = {
-  myMedia:null,
   completeUrl:null,
   androidPath:'/android_asset/www/sounds/',
   screenStateVoiceMessages:['alphabetKeyboard',  'punctuationKeyboard', 'numberKeyboard', 'basicActions', 'bookmarks', 'history'],
@@ -18,6 +17,7 @@ var feedback = {
   playMediaFile:function(url){ 
     var myMedia = new Media(url, onSuccess, onError);
     myMedia.play();  
+    myMedia.release();
   },
   playVoiceMessage:function(index){
     feedback.playAudio(this.voiceMessages[index], 'general');

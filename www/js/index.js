@@ -55,7 +55,8 @@ var app = {
         app.receivedEvent('deviceready');
     },
     // Update DOM on a Received Event
-    receivedEvent: function() {      
+    receivedEvent: function() { 
+        alert(Media);    
         webSurf.setKey();
         app.appStart();
     },
