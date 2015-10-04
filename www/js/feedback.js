@@ -41,6 +41,7 @@ var feedback = {
       });      
     }
     else{
+        alert("media null");
         feedback.myMedia = new Media(url, feedback.onSuccess, feedback.onError);
         feedback.myMedia.play();
     }
