@@ -63,23 +63,29 @@ var app = {
     appStart: function(){    
         mc.add([singleTap, pressHold]);
 
-        mc.on('singleTap press', function(ev) {
+        mc.on('singleTap swipeleft swiperight swipeup swipedown press', function(ev) {
           if(ev.type == singleTapString){
             var singleTapObj = {};
             singleTapObj.type = ev.type;
             selectedActions.push(singleTapObj);
           } 
+          if(ev.type == 'swipeleft'){
+            alert('left');
+          }
+          if(ev.type == 'swiperight'){
+            alert('right');
+          }
+          if(ev.type == 'swipeup'){
+            alert('up');
+          }
+          if(ev.type == 'swipedown'){
+            alert('down');
+          }
           if(ev.type == pressHoldString){
             feedback.vibrate(500);
             displayCharacter();
             selectedActions = [];
           }
-        });
-        mc.on('swipeLeft', function(ev) {
-            alert('left');
-        });
-         mc.on('swipeRight', function(ev) {
-            alert('right');
         });
 
 
