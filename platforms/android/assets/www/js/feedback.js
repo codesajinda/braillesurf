@@ -15,13 +15,13 @@ var feedback = {
     feedback.playMediaFile(this.completeUrl);        
   },
   playMediaFile:function(url){ 
-    var my_media = new Media(url, 
+    /*var my_media = new Media(url, 
       function(){
         alert("success");        
     }, function(){
         feedback.beep();
     });
-    my_media.play();  
+    my_media.play();  */
   },
   playVoiceMessage:function(index){
     feedback.playAudio(this.voiceMessages[index], 'general');
