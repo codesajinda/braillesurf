@@ -61,7 +61,6 @@ var app = {
     },
 
     appStart: function(){    
-        alert(navigator.userAgent);
         mc.add([singleTap, pressHold]);
 
         mc.on('singleTap press', function(ev) {
@@ -76,10 +75,15 @@ var app = {
             selectedActions = [];
           }
         });
+        mc.on('swipeLeft', function(ev) {
+            alert('left');
+        });
+         mc.on('swipeRight', function(ev) {
+            alert('right');
+        });
 
 
-
-        $(myElement).swipe(function(direction) {
+       /* $(myElement).swipe(function(direction) {
           switch(direction) {
             case swipeLeftString:
               var swipeLeftObj = {};  
@@ -115,7 +119,7 @@ var app = {
               feedback.playVoiceMessage(0);
             break;
           }
-        }, { preventDefault: true});
+        }, { preventDefault: true});*/
 
         function switchKeyboards(){   
             //If the array contains swipe up then move to the other keyboard
