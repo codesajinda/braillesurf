@@ -29,7 +29,8 @@ var selectedActions = [];
 var wordArray = [];
 var fingerMoves = [1,2,3,4,5];
 var singleTap = new Hammer.Tap({ event: singleTapString});
-var pressHold = new Hammer.Press({ event: pressHoldString});     
+var pressHold = new Hammer.Press({ event: pressHoldString});  
+var swipes = new Hammer.Swipe();   
 var myElement = document.getElementById('elem1');
 var mc = new Hammer.Manager(myElement);
 var lastChange = 0;
@@ -61,7 +62,7 @@ var app = {
     },
 
     appStart: function(){    
-        mc.add([singleTap, pressHold]);
+        mc.add([singleTap, pressHold, swipes]);
 
         mc.on('singleTap swipeleft swiperight swipeup swipedown press', function(ev) {
           if(ev.type == singleTapString){
