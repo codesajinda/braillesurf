@@ -1,5 +1,6 @@
 var basicActions = {
   displayText: function(){
+      alert(myElement);
       myElement.textContent = '';
       myElement.textContent = wordArray.join('');
       hasAValue = true;
