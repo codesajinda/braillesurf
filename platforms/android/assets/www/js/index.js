@@ -61,6 +61,7 @@ var app = {
     },
 
     appStart: function(){    
+        alert(navigator.userAgent);
         mc.add([singleTap, pressHold]);
 
         mc.on('singleTap press', function(ev) {
@@ -114,7 +115,7 @@ var app = {
               feedback.playVoiceMessage(0);
             break;
           }
-        });
+        }, { preventDefault: true});
 
         function switchKeyboards(){   
             //If the array contains swipe up then move to the other keyboard
