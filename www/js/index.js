@@ -164,23 +164,19 @@ var app = {
           switch(lastChange) {
             case 0:
               alphabetKeyboard.displayValue();
-              hasAValue = true;
+              alert('returned');
               break;
             case 1:
               punctuationKeyboard.displayValue();
-              hasAValue = true;
               break;
             case 2:
               numericKeyboard.displayValue();
-              hasAValue = true;
               break;
             case 3:
               basicActions.displayAction();
-              hasAValue = true;
               break;
             case 4:
               bookmark.displayAction();
-              hasAValue = true;
               break;
             default:
               break;
@@ -208,6 +204,7 @@ var app = {
           }
 
           hasAValue = false;
+          alert("eof");
         }
     }
     

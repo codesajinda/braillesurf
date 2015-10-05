@@ -15,6 +15,7 @@ var alphabetKeyboard = {
             wordArray.push(this.capitalAlphabet[0].letter);            
             basicActions.displayText();
             return;
+            alert('nothing');
           } 
         }
       }
