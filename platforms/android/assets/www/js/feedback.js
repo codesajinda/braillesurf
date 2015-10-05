@@ -17,8 +17,7 @@ var feedback = {
   playMediaFile:function(url){ 
     var my_media = new Media(url, 
       function(){
-        alert("success");
-        my_media.release(); 
+        alert("success");        
     }, function(){
         feedback.beep();
     });
