@@ -38,5 +38,9 @@ var feedback = {
   },
   beep:function(){
       navigator.notification.beep(1);
+  },
+  pauseMediaFile:function(){
+    
   }
+
 }
