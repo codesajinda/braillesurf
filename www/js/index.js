@@ -62,7 +62,7 @@ var app = {
     },
 
     appStart: function(){    
-        /*mc.add([singleTap, pressHold, swipes]);
+        mc.add([singleTap, pressHold, swipes]);
 
         mc.on('singleTap press', function(ev) {
           if(ev.type == singleTapString){
@@ -75,11 +75,10 @@ var app = {
             displayCharacter();
             selectedActions = [];
           }
-        });*/
+        });
 
         $(myElement).swipe(function(direction) {
-          alert(direction);
-          /*switch(direction) {
+          switch(direction) {
             case swipeLeftString:
               var swipeLeftObj = {};  
               swipeLeftObj.type = direction;  
@@ -113,7 +112,7 @@ var app = {
             default:
               feedback.playVoiceMessage(0);
             break;
-          }*/
+          }
         });
 
         function switchKeyboards(){   
@@ -164,7 +163,6 @@ var app = {
           switch(lastChange) {
             case 0:
               alphabetKeyboard.displayValue();
-              alert('returned');
               break;
             case 1:
               punctuationKeyboard.displayValue();
