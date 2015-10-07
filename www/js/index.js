@@ -88,7 +88,9 @@ var app = {
             selectedActions = [];
           }
         });
-
+        $(myElement).swipe(function(direction) {
+          alert(direction);
+        });
 
        /* $(myElement).swipe(function(direction) {
           switch(direction) {
