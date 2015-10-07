@@ -62,38 +62,24 @@ var app = {
     },
 
     appStart: function(){    
-        mc.add([singleTap, pressHold, swipes]);
+        /*mc.add([singleTap, pressHold, swipes]);
 
-        mc.on('singleTap swipeleft swiperight swipeup swipedown press', function(ev) {
+        mc.on('singleTap press', function(ev) {
           if(ev.type == singleTapString){
             var singleTapObj = {};
             singleTapObj.type = ev.type;
             selectedActions.push(singleTapObj);
-          } 
-          if(ev.type == 'swipeleft'){
-            alert('left');
-          }
-          if(ev.type == 'swiperight'){
-            alert('right');
-          }
-          if(ev.type == 'swipeup'){
-            alert('up');
-          }
-          if(ev.type == 'swipedown'){
-            alert('down');
           }
           if(ev.type == pressHoldString){
             feedback.vibrate(500);
             displayCharacter();
             selectedActions = [];
           }
-        });
+        });*/
+
         $(myElement).swipe(function(direction) {
           alert(direction);
-        });
-
-       /* $(myElement).swipe(function(direction) {
-          switch(direction) {
+          /*switch(direction) {
             case swipeLeftString:
               var swipeLeftObj = {};  
               swipeLeftObj.type = direction;  
@@ -127,8 +113,8 @@ var app = {
             default:
               feedback.playVoiceMessage(0);
             break;
-          }
-        }, { preventDefault: true});*/
+          }*/
+        });
 
         function switchKeyboards(){   
             //If the array contains swipe up then move to the other keyboard
