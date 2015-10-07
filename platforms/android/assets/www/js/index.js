@@ -22,17 +22,11 @@ var swipeUpString = 'up';
 var swipeDownString = 'down';
 var swipeDownLeftString = 'downleft'; 
 var swipeDownRightString = 'downright';
-var pressHoldString = 'press';
-var singleTapString = 'singleTap';
-var doubleTapString = 'doubleTap';
 var selectedActions = [];
 var wordArray = [];
-var fingerMoves = [1,2,3,4,5];
-var singleTap = new Hammer.Tap({ event: singleTapString});
-var pressHold = new Hammer.Press({ event: pressHoldString});  
-var swipes = new Hammer.Swipe();   
+var fingerMoves = [1,2,3,4,5];  
 var myElement = document.getElementById('elem1');
-var mc = new Hammer.Manager(myElement);
+var mc = new Hammer(myElement);
 var lastChange = 0;
 //Checks whether any thing matched the provided set of gestures
 var hasAValue = false;
@@ -62,19 +56,18 @@ var app = {
     },
 
     appStart: function(){    
-        mc.add([singleTap, pressHold]);
+        mc.on('tap', function(ev) {
+          alert('tap');
+          var singleTapObj = {};
+          singleTapObj.type = ev.type;
+          selectedActions.push(singleTapObj);
+        });
 
-        mc.on('singleTap press', function(ev) {
-          if(ev.type == singleTapString){
-            var singleTapObj = {};
-            singleTapObj.type = ev.type;
-            selectedActions.push(singleTapObj);
-          }
-          if(ev.type == pressHoldString){
-            feedback.vibrate(500);
-            displayCharacter();
-            selectedActions = [];
-          }
+        mc.on('press', function(ev) {
+          alert('press');
+          feedback.vibrate(500);
+          displayCharacter();
+          selectedActions = [];
         });
 
         $(myElement).swipe(function(direction) {
