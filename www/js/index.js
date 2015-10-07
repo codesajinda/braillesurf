@@ -51,7 +51,7 @@ var app = {
     },
     // Update DOM on a Received Event
     receivedEvent: function() { 
-        webSurf.setKey();
+        //webSurf.setKey();
         app.appStart();
     },
 
