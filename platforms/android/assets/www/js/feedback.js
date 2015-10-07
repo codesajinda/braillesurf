@@ -1,6 +1,5 @@
 var feedback = {
   completeUrl:null,
-  myMedia:null,
   androidPath:'/android_asset/www/sounds/',
   screenStateVoiceMessages:['alphabetKeyboard',  'punctuationKeyboard', 'numberKeyboard', 'basicActions', 'bookmarks', 'history'],
   voiceMessages:['sorryIDidNotGetYou', 'deletedLastLetter'],
@@ -16,13 +15,13 @@ var feedback = {
     feedback.playMediaFile(this.completeUrl);        
   },
   playMediaFile:function(url){ 
-    feedback.myMedia = new Media(url, 
+    var my_Media = new Media(url, 
       function(){
         alert("success");        
     }, function(){
         feedback.beep();
     });
-    feedback.myMedia.play();
+    my_Media.play();
   },
   playVoiceMessage:function(index){
     feedback.playAudio(this.voiceMessages[index], 'general');
@@ -42,6 +41,5 @@ var feedback = {
   },
   pauseMediaFile:function(){
 
-  }
-
+  },
 }
