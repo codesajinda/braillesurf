@@ -62,7 +62,7 @@ var app = {
     },
 
     appStart: function(){    
-        mc.add([singleTap, pressHold, swipes]);
+        mc.add([singleTap, pressHold]);
 
         mc.on('singleTap press', function(ev) {
           if(ev.type == singleTapString){
