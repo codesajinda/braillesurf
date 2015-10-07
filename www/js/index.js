@@ -34,7 +34,7 @@ var swipes = new Hammer.Swipe();
 var myElement = document.getElementById('elem1');
 var mc = new Hammer.Manager(myElement);
 var lastChange = 0;
-//Checks whether a character exists for the provided gesture
+//Checks whether any thing matched the provided set of gestures
 var hasAValue = false;
 var app = {
     // Application Constructor
@@ -127,7 +127,6 @@ var app = {
                     else{
                       lastChange = lastChange + 1;
                     }
-                    alert(lastChange);
                     playVoiceOnKeyboardChange(lastChange);
                  }
                }
@@ -203,7 +202,6 @@ var app = {
           }
 
           hasAValue = false;
-          alert("eof");
         }
     }
     
