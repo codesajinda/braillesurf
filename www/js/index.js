@@ -78,6 +78,7 @@ var app = {
         });
 
         $(myElement).swipe(function(direction) {
+          alert(direction);
           switch(direction) {
             case swipeLeftString:
               var swipeLeftObj = {};  
