@@ -58,9 +58,10 @@ var app = {
     appStart: function(){    
         mc.on('tap', function(ev) {
           alert('tap');
-          var singleTapObj = {};
+          /*var singleTapObj = {};
           singleTapObj.type = ev.type;
-          selectedActions.push(singleTapObj);
+          selectedActions.push(singleTapObj);*/
+          selectedActions.push('tap');
         });
 
         mc.on('press', function(ev) {
@@ -74,34 +75,40 @@ var app = {
           alert(direction);
           switch(direction) {
             case swipeLeftString:
-              var swipeLeftObj = {};  
-              swipeLeftObj.type = direction;  
-              selectedActions.push(swipeLeftObj);
+              /*var swipeLeftObj = {};  
+              swipeLeftObj.type = direction;
+              selectedActions.push(swipeLeftObj);  */
+              selectedActions.push(direction);
             break;
             case swipeRightString:
-              var swipeRightObj = {};
+             /* var swipeRightObj = {};
               swipeRightObj.type = direction;
-              selectedActions.push(swipeRightObj);
+              selectedActions.push(swipeRightObj);*/
+               selectedActions.push(direction);
             break;
             case swipeUpString:
-              var swipeUpObj = {};  
+              /*var swipeUpObj = {};  
               swipeUpObj.type = direction; 
-              selectedActions.push(swipeUpObj);
+              selectedActions.push(swipeUpObj);*/
+               selectedActions.push(direction);
             break;
             case swipeDownString: 
-              var swipeDownObj = {};
+             /* var swipeDownObj = {};
               swipeDownObj.type = direction;
-              selectedActions.push(swipeDownObj);
+              selectedActions.push(swipeDownObj);*/
+               selectedActions.push(direction);
             break;
             case swipeDownLeftString: 
-              var swipeDownLeftObj = {};
+              /*var swipeDownLeftObj = {};
               swipeDownLeftObj.type = direction;
-              selectedActions.push(swipeDownLeftObj);
+              selectedActions.push(swipeDownLeftObj);*/
+               selectedActions.push(direction);
             break;
             case swipeDownRightString:       
-              var swipeDownRightObj = {};
+             /* var swipeDownRightObj = {};
               swipeDownRightObj.type = direction;
-              selectedActions.push(swipeDownRightObj);
+              selectedActions.push(swipeDownRightObj);*/              
+               selectedActions.push(direction);
             break;
             default:
               feedback.playVoiceMessage(0);
