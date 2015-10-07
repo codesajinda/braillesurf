@@ -65,7 +65,7 @@ var app = {
 
         mc.on('press', function(ev) {
           alert('press');
-          feedback.vibrate(500);
+          //feedback.vibrate(500);
           //displayCharacter();
           selectedActions = [];
         });
