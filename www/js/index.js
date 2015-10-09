@@ -56,20 +56,24 @@ var app = {
     },
 
     appStart: function(){    
-        mc.on('tap', function(ev) {
+        var tapHandler, pressHandler;
+
+        tapPressInitialize(myElement, tapHandler, pressHandler);
+
+        function tapHandler(){
           alert('tap');
           /*var singleTapObj = {};
           singleTapObj.type = ev.type;
           selectedActions.push(singleTapObj);
           selectedActions.push('tap');*/
-        });
+        }
 
-        mc.on('press', function(ev) {
+        function pressHandler(){
           alert('press');
           /*feedback.vibrate(500);
           //displayCharacter();
           selectedActions = [];*/
-        });
+        }      
 
         $(myElement).swipe(function(direction) {
           alert(direction);
