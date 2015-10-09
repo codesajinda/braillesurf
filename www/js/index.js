@@ -26,7 +26,6 @@ var selectedActions = [];
 var wordArray = [];
 var fingerMoves = [1,2,3,4,5];  
 var myElement = document.getElementById('elem1');
-var mc = new Hammer(myElement);
 var lastChange = 0;
 //Checks whether any thing matched the provided set of gestures
 var hasAValue = false;
