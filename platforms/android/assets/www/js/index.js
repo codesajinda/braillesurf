@@ -16,6 +16,7 @@
  * specific language governing permissions and limitations
  * under the License.
  */
+var singleTapString = 'tap';
 var swipeLeftString  ='left';
 var swipeRightString = 'right';
 var swipeUpString = 'up';
@@ -60,64 +61,54 @@ var app = {
         tapPressInitialize(myElement, tapHandler, pressHandler);
 
         function tapHandler(){
-          alert('tap');
-          /*var singleTapObj = {};
-          singleTapObj.type = ev.type;
+          var singleTapObj = {};
+          singleTapObj.type = singleTapString;
           selectedActions.push(singleTapObj);
-          selectedActions.push('tap');*/
         }
 
         function pressHandler(){
-          alert('press');
-          /*feedback.vibrate(500);
-          //displayCharacter();
-          selectedActions = [];*/
+          feedback.vibrate(500);
+          displayCharacter();
+          selectedActions = [];
         }      
 
         $(myElement).swipe(function(direction) {
-          alert(direction);
           switch(direction) {
             case swipeLeftString:
-              alert(swipeLeftString);
-              /*var swipeLeftObj = {};  
+              var swipeLeftObj = {};  
               swipeLeftObj.type = direction;
               selectedActions.push(swipeLeftObj);  
-              selectedActions.push(direction);*/
+              selectedActions.push(direction);
             break;
             case swipeRightString:
-             /* var swipeRightObj = {};
+              var swipeRightObj = {};
               swipeRightObj.type = direction;
               selectedActions.push(swipeRightObj);
-               selectedActions.push(direction);*/
-               alert(swipeRightString);
+              selectedActions.push(direction);
             break;
             case swipeUpString:
-              /*var swipeUpObj = {};  
+              var swipeUpObj = {};  
               swipeUpObj.type = direction; 
               selectedActions.push(swipeUpObj);
-               selectedActions.push(direction);*/
-               alert(swipeUpString);
+              selectedActions.push(direction);
             break;
             case swipeDownString: 
-             /* var swipeDownObj = {};
+              var swipeDownObj = {};
               swipeDownObj.type = direction;
               selectedActions.push(swipeDownObj);
-               selectedActions.push(direction);*/
-               alert(swipeDownString);
+              selectedActions.push(direction);
             break;
             case swipeDownLeftString: 
-              /*var swipeDownLeftObj = {};
+              var swipeDownLeftObj = {};
               swipeDownLeftObj.type = direction;
               selectedActions.push(swipeDownLeftObj);
-               selectedActions.push(direction);*/
-               alert(swipeDownLeftString);
+              selectedActions.push(direction);
             break;
             case swipeDownRightString:       
-             /* var swipeDownRightObj = {};
+              var swipeDownRightObj = {};
               swipeDownRightObj.type = direction;
               selectedActions.push(swipeDownRightObj);              
-               selectedActions.push(direction);*/
-               alert(swipeDownRightString);
+              selectedActions.push(direction);
             break;
             default:
               feedback.playVoiceMessage(0);
