@@ -151,6 +151,7 @@ var app = {
             default:
             break;
           }
+          hasAValue = false;
         }
 
         function displayCharacter(){

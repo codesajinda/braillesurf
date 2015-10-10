@@ -109,13 +109,13 @@ var numericKeyboard = {
         }
       }
 
-      //If the array contains just two elements and if its a swipe down, single tap, and a swipe up then its an 8
+      //If the array contains just two elements and if its a swipe down, single tap, and a swipe left then its an 8
       if(selectedActions.length == fingerMoves[2]){
         if(selectedActions[0] != null && typeof (selectedActions[0]) !=='undefined' &&
           selectedActions[1] != null && typeof (selectedActions[1]) !=='undefined' &&
           selectedActions[2] != null && typeof (selectedActions[2]) !=='undefined'){
           if(selectedActions[0].type == swipeDownString && selectedActions[1].type == singleTapString 
-            && selectedActions[2].type == swipeUpString){
+            && selectedActions[2].type == swipeLeftString){
             //8   
             feedback.playAudio(this.numeric[7].name, this.soundFolder);            
             wordArray.push(this.numeric[7].symbol); 
