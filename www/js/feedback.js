@@ -24,6 +24,7 @@ var feedback = {
       feedback.isPaused = false;
    }
    feedback.myMedia.play();
+   selectedActions = [];
   },
   playVoiceMessage:function(index){
     feedback.playAudio(this.voiceMessages[index], 'general');

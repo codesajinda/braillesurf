@@ -51,7 +51,7 @@ var app = {
     },
     // Update DOM on a Received Event
     receivedEvent: function() { 
-        //webSurf.setKey();
+        webSurf.setKey();
         app.appStart();
     },
 
@@ -68,7 +68,10 @@ var app = {
 
         function pressHandler(){
           feedback.vibrate(500);
-          displayCharacter();
+          displayCharacter();          
+          switchKeyboards();
+          deleteLastEnteredText(); 
+          setHasAValue();
           selectedActions = [];
         }      
 
@@ -173,8 +176,6 @@ var app = {
             default:
               break;
           }          
-          switchKeyboards();
-          deleteLastEnteredText(); 
         }
 
         function deleteLastEnteredText(){
@@ -188,12 +189,14 @@ var app = {
                   return;
                }
              }
-          }
+          }         
+        }
+
+        function setHasAValue(){
           if(hasAValue == false){
             //If the array doesn't contain a matching letter then play voice sorry i didn't get you
             feedback.playVoiceMessage(0);    
           }
-
           hasAValue = false;
         }
     }

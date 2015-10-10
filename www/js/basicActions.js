@@ -2,7 +2,6 @@ var basicActions = {
   displayText: function(){
       myElement.textContent = '';
       myElement.textContent = wordArray.join('');
-      selectedActions = [];
   },
   displayAction:function(){    
     var swipeRightCount = 0;
