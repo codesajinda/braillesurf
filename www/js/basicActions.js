@@ -1,11 +1,9 @@
 var basicActions = {
   displayText: function(){
-      /*myElement.textContent = '';
-      alert(wordArray.length);
+      myElement.textContent = '';
       myElement.textContent = wordArray.join('');
-      hasAValue = true;*/
+      hasAValue = true;
       selectedActions = [];
-      alert("dText");
   },
   displayAction:function(){    
     var swipeRightCount = 0;

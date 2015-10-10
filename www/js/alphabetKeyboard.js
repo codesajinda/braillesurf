@@ -14,7 +14,6 @@ var alphabetKeyboard = {
             feedback.playAudio(this.capitalAlphabet[0].letter.toLowerCase(), this.soundFolder);
             wordArray.push(this.capitalAlphabet[0].letter);            
             basicActions.displayText();
-            alert("akeyboard");
             return;
           } 
         }
