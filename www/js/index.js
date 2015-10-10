@@ -172,9 +172,9 @@ var app = {
               break;
             default:
               break;
-          }
-          deleteLastEnteredText(); 
+          }          
           switchKeyboards();
+          deleteLastEnteredText(); 
         }
 
         function deleteLastEnteredText(){
@@ -189,7 +189,6 @@ var app = {
                }
              }
           }
-
           if(hasAValue == false){
             //If the array doesn't contain a matching letter then play voice sorry i didn't get you
             feedback.playVoiceMessage(0);    
