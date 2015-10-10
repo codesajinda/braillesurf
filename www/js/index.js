@@ -75,30 +75,35 @@ var app = {
         $(myElement).swipe(function(direction) {
           switch(direction) {
             case swipeLeftString:
+            alert(swipeLeftString);
               var swipeLeftObj = {};  
               swipeLeftObj.type = direction;
               selectedActions.push(swipeLeftObj);  
               selectedActions.push(direction);
             break;
             case swipeRightString:
+              alert(swipeRightString);
               var swipeRightObj = {};
               swipeRightObj.type = direction;
               selectedActions.push(swipeRightObj);
               selectedActions.push(direction);
             break;
             case swipeUpString:
+              alert(swipeUpString);
               var swipeUpObj = {};  
               swipeUpObj.type = direction; 
               selectedActions.push(swipeUpObj);
               selectedActions.push(direction);
             break;
             case swipeDownString: 
+              alert(swipeDownString);
               var swipeDownObj = {};
               swipeDownObj.type = direction;
               selectedActions.push(swipeDownObj);
               selectedActions.push(direction);
             break;
             case swipeDownLeftString: 
+            alert(swipeDownLeftString);
               var swipeDownLeftObj = {};
               swipeDownLeftObj.type = direction;
               selectedActions.push(swipeDownLeftObj);
