@@ -15,7 +15,8 @@ var feedback = {
     alert(this.completeUrl);
     feedback.playMediaFile(this.completeUrl);        
   },
-  playMediaFile:function(url){ 
+  playMediaFile:function(url){     
+   hasAValue = true;
    feedback.myMedia = new Media(url, 
       function(){  
         feedback.myMedia.release();
@@ -28,7 +29,6 @@ var feedback = {
     feedback.playAudio(this.voiceMessages[index], 'general');
   },
   playVoiceScreenState:function(index){ 
-    hasValue = true;
     feedback.playAudio(this.screenStateVoiceMessages[index], 'general');
   },
   onSuccess:function() {

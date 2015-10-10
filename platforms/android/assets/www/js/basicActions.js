@@ -2,7 +2,6 @@ var basicActions = {
   displayText: function(){
       myElement.textContent = '';
       myElement.textContent = wordArray.join('');
-      hasAValue = true;
       selectedActions = [];
   },
   displayAction:function(){    
