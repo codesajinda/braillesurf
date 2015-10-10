@@ -95,7 +95,6 @@ var app = {
               selectedActions.push(swipeDownObj);
             break;
             case swipeDownLeftString: 
-            alert(swipeDownLeftString);
               var swipeDownLeftObj = {};
               swipeDownLeftObj.type = direction;
               selectedActions.push(swipeDownLeftObj);

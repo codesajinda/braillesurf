@@ -329,13 +329,11 @@ var alphabetKeyboard = {
         }
       }
 
-      //If the array contains just three elements and if its a swipe down and a swipe right, and single tap then its an V
-      if(selectedActions.length == fingerMoves[2]){
+      //If the array contains just two elements and if its a swipe down and a swipe right then its an V
+      if(selectedActions.length == fingerMoves[1]){
         if(selectedActions[0] != null && typeof (selectedActions[0]) !=='undefined' &&
-          selectedActions[1] != null && typeof (selectedActions[1]) !=='undefined' &&
-          selectedActions[2] != null && typeof (selectedActions[2]) !=='undefined'){
-          if(selectedActions[0].type == swipeDownString  && selectedActions[1].type == swipeRightString
-             && selectedActions[2].type == singleTapString){
+          selectedActions[1] != null && typeof (selectedActions[1]) !=='undefined'){
+          if(selectedActions[0].type == swipeDownString  && selectedActions[1].type == swipeRightString){
             //V                
             feedback.playAudio(this.capitalAlphabet[21].letter.toLowerCase(), this.soundFolder);
             wordArray.push(this.capitalAlphabet[21].letter);
