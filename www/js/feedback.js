@@ -28,6 +28,7 @@ var feedback = {
     feedback.playAudio(this.voiceMessages[index], 'general');
   },
   playVoiceScreenState:function(index){ 
+    hasValue = true;
     feedback.playAudio(this.screenStateVoiceMessages[index], 'general');
   },
   onSuccess:function() {
