@@ -13,7 +13,6 @@ var feedback = {
   },
   playAudio:function(value, folder){    
     this.completeUrl = this.androidPath + folder + '/' +  value + '.mp3';
-    alert(this.completeUrl);
     feedback.playMediaFile(this.completeUrl);        
   },
   playMediaFile:function(url){     

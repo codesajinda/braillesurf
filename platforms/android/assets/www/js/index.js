@@ -151,7 +151,6 @@ var app = {
             default:
             break;
           }
-          hasAValue = true;
         }
 
         function displayCharacter(){
@@ -191,7 +190,7 @@ var app = {
              }
           }
 
-          if(!hasAValue){
+          if(hasAValue == false){
             //If the array doesn't contain a matching letter then play voice sorry i didn't get you
             feedback.playVoiceMessage(0);    
           }
