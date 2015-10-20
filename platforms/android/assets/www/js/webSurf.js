@@ -40,6 +40,7 @@ var webSurf = {
           }
       });
       webSurf.returnedHtml = pageContents.join(' ');
+      alert(webSurf.returnedHtml);
     }
   },
   getAudioText:function(){
@@ -78,6 +79,7 @@ var webSurf = {
         })
         .done(function(msg) {
           result = JSON.parse(msg);
+          alert(msg);
           if(result.error != null){
             feedback.playAudio('error', result.error);
             result = null;
