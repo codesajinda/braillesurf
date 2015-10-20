@@ -18,9 +18,9 @@ var webSurf = {
         feedback.vibrate(2000);
     }
   },
-  readPage:function() {  
-    alert(webSurf.key);
+  readPage:function() {      
     var data  = {siteurl:webSurf.url, user:JSON.stringify(webSurf.key), action:'ReadContent'};
+    alert(data.user);
     var pageContents = [];
     var result = webSurf.postToServer(webSurf.serverPath + 'BrailleSurf.php', data);
 
