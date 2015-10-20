@@ -20,7 +20,7 @@ var webSurf = {
   },
   readPage:function() {  
     alert(webSurf.key);
-    var data  = {siteurl:webSurf.url, user:webSurf.key, action:'ReadContent'};
+    var data  = {siteurl:webSurf.url, user:JSON.stringify(webSurf.key), action:'ReadContent'};
     var pageContents = [];
     var result = webSurf.postToServer(webSurf.serverPath + 'BrailleSurf.php', data);
 
