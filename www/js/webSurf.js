@@ -82,6 +82,10 @@ var webSurf = {
             feedback.playAudio('error', result.error);
             result = null;
           }
+          else{
+            hasAValue = true;
+            feedback.vibrate(2000);
+          }
         }).fail(function(xhr, textStatus, errorThrown) {
           feedback.beep();
         });
