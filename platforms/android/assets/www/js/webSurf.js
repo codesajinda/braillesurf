@@ -76,6 +76,7 @@ var webSurf = {
         })
         .done(function(msg) {
           result = JSON.parse(msg);
+          alert(msg);
           if(result.error != null){
             feedback.playAudio('error', result.error);
             result = null;
