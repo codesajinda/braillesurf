@@ -16,7 +16,8 @@ var webSurf = {
     }
   },
   readPage:function() {      
-    var data  = {siteurl:webSurf.url, user:storage.getItem('key'), action:'ReadContent'};
+    var key = JSON.parse(storage.getItem('key'));
+    var data  = {siteurl:webSurf.url, user:{UserID:key.UserID, Key:key.Key, IsActive:key.IsActive}, action:'ReadContent'};
     alert(data.user);
     var pageContents = [];
     var result = webSurf.postToServer(webSurf.serverPath + 'BrailleSurf.php', data);
@@ -43,7 +44,8 @@ var webSurf = {
     }
   },
   getAudioText:function(){
-      var data  = {src:webSurf.returnedHtml, user:storage.getItem('key'), action:'GetAudioText'};
+      var key = JSON.parse(storage.getItem('key'));
+      var data  = {src:webSurf.returnedHtml, user:{UserID:key.UserID, Key:key.Key, IsActive:key.IsActive}, action:'GetAudioText'};
       var result = webSurf.postToServer(webSurf.serverPath + 'BrailleSurf.php', data);
       var urlToFile = null;
       if(result != null){
@@ -52,8 +54,9 @@ var webSurf = {
       return urlToFile;
   },
   bookmark:function(){
+      var key = JSON.parse(storage.getItem('key'));
       var url = wordArray.join('').replace(/^(https?|http):\/\//, '');
-      var data  = {src:url, user:storage.getItem('key'), action:'Bookmark'};
+      var data  = {src:url, user:{UserID:key.UserID, Key:key.Key, IsActive:key.IsActive}, action:'Bookmark'};
       var result = webSurf.postToServer(webSurf.serverPath + 'BrailleSurf.php', data);
       if(result != null){
         var existingEntries = JSON.parse(localStorage.getItem("bookmarks"));
