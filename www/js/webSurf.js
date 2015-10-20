@@ -2,24 +2,21 @@ var webSurf = {
   url:null,
   serverPath:'http://www.csmasterpiece.com/reader/',
   returnedHtml:null,
-  key:null,
   setKey:function(){  
     if(storage.getItem('key') == null){
       var data =  {action:'GetKey'};
       var result = webSurf.postToServer(webSurf.serverPath + 'BrailleSurf.php', data);
       if(result != null){
-        storage.setItem('key', result.key);
-        webSurf.key = storage.getItem('key');        
+        storage.setItem('key', JSON.stringify(result.key));    
         feedback.vibrate(2000);
       }
     }
     else{
-        webSurf.key = storage.getItem('key');
         feedback.vibrate(2000);
     }
   },
   readPage:function() {      
-    var data  = {siteurl:webSurf.url, user:JSON.stringify(webSurf.key), action:'ReadContent'};
+    var data  = {siteurl:webSurf.url, user:storage.getItem('key'), action:'ReadContent'};
     alert(data.user);
     var pageContents = [];
     var result = webSurf.postToServer(webSurf.serverPath + 'BrailleSurf.php', data);
@@ -46,7 +43,7 @@ var webSurf = {
     }
   },
   getAudioText:function(){
-      var data  = {src:webSurf.returnedHtml, key:webSurf.key, action:'GetAudioText'};
+      var data  = {src:webSurf.returnedHtml, user:storage.getItem('key'), action:'GetAudioText'};
       var result = webSurf.postToServer(webSurf.serverPath + 'BrailleSurf.php', data);
       var urlToFile = null;
       if(result != null){
@@ -56,7 +53,7 @@ var webSurf = {
   },
   bookmark:function(){
       var url = wordArray.join('').replace(/^(https?|http):\/\//, '');
-      var data  = {src:url, key:webSurf.key, action:'Bookmark'};
+      var data  = {src:url, user:storage.getItem('key'), action:'Bookmark'};
       var result = webSurf.postToServer(webSurf.serverPath + 'BrailleSurf.php', data);
       if(result != null){
         var existingEntries = JSON.parse(localStorage.getItem("bookmarks"));
