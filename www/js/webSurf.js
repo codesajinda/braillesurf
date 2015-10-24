@@ -39,7 +39,7 @@ var webSurf = {
               $(this).contents().each(processNodes);
           }
       });
-      webSurf.returnedHtml = pageContents.join(' ');
+      webSurf.returnedHtml = encodeURI(pageContents.join(' '));
       alert(webSurf.returnedHtml);
     }
   },
@@ -75,7 +75,7 @@ var webSurf = {
     $.ajax({
           method: "POST",
           url: url,
-          data:JSON.stringify(data),
+          data:data,
           async:false
         })
         .done(function(msg) {
