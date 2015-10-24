@@ -71,10 +71,11 @@ var webSurf = {
   },
   postToServer:function(url, data){
     var result = null;
+    alert(JSON.stringify(data));
     $.ajax({
           method: "POST",
           url: url,
-          data:data,
+          data:JSON.stringify(data),
           async:false
         })
         .done(function(msg) {
