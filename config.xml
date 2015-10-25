@@ -20,7 +20,7 @@
   <preference name="android-installLocation" value="auto"/>
   <gap:plugin name="org.apache.cordova.battery-status" source="npm"/>
   <gap:plugin name="org.apache.cordova.camera" source="npm"/>
-  <gap:plugin name="org.apache.cordova.media-capture" source="npm"/>
+  <gap:plugin name="org.apache.cordova.media-capture" source="npm" version="0.3.3"/>
   <gap:plugin name="org.apache.cordova.console" source="npm"/>
   <gap:plugin name="org.apache.cordova.contacts" source="npm"/>
   <gap:plugin name="org.apache.cordova.device" source="npm"/>
