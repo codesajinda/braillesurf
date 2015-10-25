@@ -2,6 +2,7 @@ var webSurf = {
   url:null,
   serverPath:'http://www.csmasterpiece.com/reader/',
   returnedHtml:null,
+  currentAccessingWebsite:null,
   setKey:function(){  
     if(storage.getItem('key') == null){
       var data =  {action:'GetKey'};
@@ -23,6 +24,8 @@ var webSurf = {
 
     if(result != null){
       var html = $(result.content);
+      webSurf.currentAccessingWebsite = result.siteurl;
+      alert(webSurf.currentAccessingWebsite);
       html.contents().each(function processNodes ()
       {
           if (this.nodeType == 3){ 
@@ -45,7 +48,7 @@ var webSurf = {
   },
   getAudioText:function(){
       var key = JSON.parse(storage.getItem('key'));
-      var data  = {src:webSurf.returnedHtml, user:{UserID:key.UserID, Key:key.Key, IsActive:key.IsActive}, action:'GetAudioText'};
+      var data  = {src:webSurf.returnedHtml, siteurl:webSurf.currentAccessingWebsite, user:{UserID:key.UserID, Key:key.Key, IsActive:key.IsActive}, action:'GetAudioText'};
       var result = webSurf.postToServer(webSurf.serverPath + 'BrailleSurf.php', data);
       var urlToFile = null;
       if(result != null){
