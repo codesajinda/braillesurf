@@ -42,6 +42,8 @@ var feedback = {
       navigator.notification.beep(1);
   },
   pauseMediaFile:function(){
+      alert(feedback.myMedia);
+      alert('pausing');
       feedback.myMedia.pause();
       feedback.isPaused = true;
   },
