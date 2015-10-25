@@ -43,11 +43,11 @@ var basicActions = {
          }
        }
     }
-    //If the array contains a tap then its a pause
+    //If the array contains a tap then its a stop
     if(selectedActions.length == fingerMoves[0]){
        if(selectedActions[0] != null && typeof (selectedActions[0]) !=='undefined'){
          if(selectedActions[0].type == singleTapString){
-            feedback.pauseMediaFile();
+            feedback.stopMediaFile();
          }
        }
     }
