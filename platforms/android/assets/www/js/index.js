@@ -53,12 +53,25 @@ var app = {
     receivedEvent: function() { 
         //webSurf.setKey();
         //app.appStart();
-        window.plugins.tts.speak("The TTS service is ready", function(){
-          alert("success");
-        }, function(){
-          alert("failed");
-        });
-        alert(navigator.tts);
+        navigator.tts.startup(startupWin, fail);
+        function startupWin(result) {
+            alert("Startup win");
+            // When result is equal to STARTED we are ready to play
+            alert("Result "+result);
+            //TTS.STARTED==2 use this once so is answered
+            if (result == 2) {
+                navigator.tts.getLanguage(win, fail);
+                navigator.tts.speak("The text to speech service is ready");                                     
+            }
+        }                               
+
+        function win(result) {
+            alert(result);
+        }
+
+        function fail(result) {
+            alert("Error = " + result);
+        }
     },
 
     appStart: function(){    
