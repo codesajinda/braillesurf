@@ -3,7 +3,7 @@ var feedback = {
   myMedia:null,
   androidPath:'/android_asset/www/sounds/',
   screenStateVoiceMessages:['alphabetKeyboard',  'punctuationKeyboard', 'numberKeyboard', 'basicActions', 'bookmarks', 'history'],
-  voiceMessages:['sorryIDidNotGetYou', 'deletedLastLetter'],
+  voiceMessages:['sorryIDidNotGetYou', 'deletedLastLetter', 'noBookmarks'],
 	vibrate:function(time){	
       navigator.vibrate(time);
 	},

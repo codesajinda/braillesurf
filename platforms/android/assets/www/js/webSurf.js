@@ -1,8 +1,8 @@
 var webSurf = {
   url:null,
   serverPath:'http://www.csmasterpiece.com/reader/',
-  returnedHtml:null,
-  currentAccessingWebsite:null,
+  bookmarks:null,
+  currentBookmarkItem:0,
   setKey:function(){  
     if(storage.getItem('key') == null){
       var data =  {action:'GetKey'};
@@ -16,38 +16,10 @@ var webSurf = {
         feedback.vibrate(2000);
     }
   },
-  readPage:function() {      
-    var key = JSON.parse(storage.getItem('key'));
-    var data  = {siteurl:webSurf.url, user:{UserID:key.UserID, Key:key.Key, IsActive:key.IsActive}, action:'ReadContent'};
-    var pageContents = [];
-    var result = webSurf.postToServer(webSurf.serverPath + 'BrailleSurf.php', data);
-
-    if(result != null){
-      var html = $(result.content);
-      webSurf.currentAccessingWebsite = result.siteurl;
-      html.contents().each(function processNodes ()
-      {
-          if (this.nodeType == 3){ 
-              var text = $(this).text().trim();
-              if(text != ''){
-                pageContents.push(text);
-              }
-          }
-          else{ 
-              if(webSurf.getReadableTagName(this.nodeName).hasValue){                
-                pageContents.push(webSurf.getReadableTagName(this.nodeName).readName);
-
-              }
-              $(this).contents().each(processNodes);
-          }
-      });
-      webSurf.returnedHtml = encodeURI(pageContents.join(' '));
-      alert(webSurf.returnedHtml);
-    }
-  },
+  
   getAudioText:function(){
       var key = JSON.parse(storage.getItem('key'));
-      var data  = {src:webSurf.returnedHtml, siteurl:webSurf.currentAccessingWebsite, user:{UserID:key.UserID, Key:key.Key, IsActive:key.IsActive}, action:'GetAudioText'};
+      var data  = {siteurl:webSurf.url, user:{UserID:key.UserID, Key:key.Key, IsActive:key.IsActive}, action:'GetAudioText'};
       var result = webSurf.postToServer(webSurf.serverPath + 'BrailleSurf.php', data);
       var urlToFile = null;
       if(result != null){
@@ -55,25 +27,39 @@ var webSurf = {
       }
       return urlToFile;
   },
-  bookmark:function(){
-      var key = JSON.parse(storage.getItem('key'));
-      var url = wordArray.join('').replace(/^(https?|http):\/\//, '');
-      var data  = {src:url, user:{UserID:key.UserID, Key:key.Key, IsActive:key.IsActive}, action:'Bookmark'};
-      var result = webSurf.postToServer(webSurf.serverPath + 'BrailleSurf.php', data);
-      if(result != null){
-        var existingEntries = JSON.parse(localStorage.getItem("bookmarks"));
-        if(existingEntries == null) existingEntries = [];
-        var entry = {
-          'bookmark': url,
-          'url': webSurf.serverPath + result.fileName
-        };
-        existingEntries.push(entry);
-        localStorage.setItem('bookmarks', JSON.stringify(existingEntries));
+  setBookmark:function(){
+      var key = JSON.parse(storage.getItem('key'));     
+      var existingEntries = JSON.parse(localStorage.getItem("bookmarks"));
+      if(existingEntries == null) existingEntries = [];
+      var entry = {
+        'bookmark': webSurf.url
+      };
+      existingEntries.push(entry);
+      localStorage.setItem('bookmarks', JSON.stringify(existingEntries));
+  },
+  readBookmark:function(){
+    if(webSurf.bookmarks == null){
+      var key = JSON.parse(storage.getItem('key'));     
+      var existingEntries = localStorage.getItem("bookmarks");
+      if(existingEntries != null){
+          var data  = {bookmarks:existingEntries, user:{UserID:key.UserID, Key:key.Key, IsActive:key.IsActive}, action:'GetBookmarks'};
+          var result = webSurf.postToServer(webSurf.serverPath + 'BrailleSurf.php', data);
+          if(result != null){
+            webSurf.bookmarks = result.bookmarks;
+            feedback.playAudio(webSurf.bookmarks[webSurf.currentBookmarkItem].audiourl);
+          }
       }
+      else{
+         feedback.playVoiceMessage(2);
+      }
+    }
+    else{
+      webSurf.currentBookmarkItem = webSurf.currentBookmarkItem + 1;
+      feedback.playAudio(webSurf.bookmarks[webSurf.currentBookmarkItem].audiourl);
+    }
   },
   postToServer:function(url, data){
     var result = null;
-    alert(JSON.stringify(data));
     $.ajax({
           method: "POST",
           url: url,
@@ -82,6 +68,7 @@ var webSurf = {
         })
         .done(function(msg) {
           result = JSON.parse(msg);
+          alert(msg);
           if(result.error != null){
             feedback.playAudio('error', result.error);
             result = null;

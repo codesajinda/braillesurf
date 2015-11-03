@@ -51,8 +51,14 @@ var app = {
     },
     // Update DOM on a Received Event
     receivedEvent: function() { 
-        webSurf.setKey();
-        app.appStart();
+        //webSurf.setKey();
+        //app.appStart();
+        window.plugins.tts.speak("The TTS service is ready", function(){
+          alert("success");
+        }, function(){
+          alert("failed");
+        });
+        alert(navigator.tts);
     },
 
     appStart: function(){    
