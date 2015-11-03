@@ -53,6 +53,8 @@ var app = {
     receivedEvent: function() { 
         //webSurf.setKey();
         //app.appStart();
+        alert('here');
+        alert(navigator.tts);
         navigator.tts.startup(startupWin, fail);
         function startupWin(result) {
             alert("Startup win");
