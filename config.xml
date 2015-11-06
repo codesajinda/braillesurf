@@ -35,6 +35,7 @@
   <gap:plugin name="org.apache.cordova.network-information" source="npm"/>
   <gap:plugin name="org.apache.cordova.splashscreen" source="npm"/>
   <gap:plugin name="org.apache.cordova.vibration" source="npm"/>
+  <gap:plugin name="com.wordsbaking.cordova.tts.TTS" source="npm"/>
   <icon src="icon.png"/>
   <icon src="www/res/icon/android/icon-36-ldpi.png" gap:platform="android" gap:qualifier="ldpi"/>
   <icon src="www/res/icon/android/icon-48-mdpi.png" gap:platform="android" gap:qualifier="mdpi"/>
