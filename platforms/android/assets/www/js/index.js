@@ -53,8 +53,8 @@ var app = {
     receivedEvent: function() { 
         //webSurf.setKey();
         //app.appStart();   
-        alert("TTS");
-        TTS.speak('hello, world!', function () {
+        alert(window.TTS);
+        window.TTS.speak('hello, world!', function () {
           alert('success');
         }, function (reason) {
             alert(reason);
