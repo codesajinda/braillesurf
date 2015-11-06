@@ -52,15 +52,13 @@ var app = {
     // Update DOM on a Received Event
     receivedEvent: function() { 
         //webSurf.setKey();
-        //app.appStart();
-        alert('here');
-        alert(navigator.tts);
-        navigator.tts.speak("The text to speech service is ready", function(){
-          alert("success");
-        }, function(){
-          alert("failed");
+        //app.appStart();   
+        TTS.speak('hello, world!', function () {
+          alert('success');
+        }, function (reason) {
+            alert(reason);
         });
-        
+     
     },
 
     appStart: function(){    

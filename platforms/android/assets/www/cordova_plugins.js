@@ -20,10 +20,10 @@ module.exports = [
         ]
     },
     {
-        "file": "plugins/org.apache.cordova.plugin.tts/www/tts.js",
-        "id": "org.apache.cordova.plugin.tts.tts",
+        "file": "plugins/cordova-plugin-tts/www/tts.js",
+        "id": "cordova-plugin-tts.tts",
         "clobbers": [
-            "navigator.tts"
+            "TTS"
         ]
     },
     {
@@ -178,7 +178,7 @@ module.exports.metadata =
 {
     "cordova-plugin-whitelist": "1.1.1-dev",
     "cordova-plugin-media": "1.0.1",
-    "org.apache.cordova.plugin.tts": "0.2.1",
+    "cordova-plugin-tts": "0.2.3",
     "cordova-plugin-file": "3.0.0"
 }
 // BOTTOM OF METADATA

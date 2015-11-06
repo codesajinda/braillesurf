@@ -32,11 +32,10 @@
         "is_top_level": true,
         "variables": {}
     },
-    "org.apache.cordova.plugin.tts": {
+    "cordova-plugin-tts": {
         "source": {
-            "type": "git",
-            "url": "https://github.com/domaemon/org.apache.cordova.plugin.tts.git",
-            "subdir": "."
+            "type": "registry",
+            "id": "cordova-plugin-tts"
         },
         "is_top_level": true,
         "variables": {}
