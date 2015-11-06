@@ -52,8 +52,10 @@ var app = {
     // Update DOM on a Received Event
     receivedEvent: function() { 
         //webSurf.setKey();
-        //app.appStart();   
-        alert(TTS);
+        //app.appStart();  
+        alert(navigator);
+        alert(navigator.TTS);
+        alert(JSON.stringify(navigator);
         TTS.speak('hello, world!', function () {
           alert('success');
         }, function (reason) {
