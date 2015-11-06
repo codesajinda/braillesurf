@@ -55,7 +55,7 @@ var app = {
         //app.appStart();  
         alert(navigator);
         alert(navigator.TTS);
-        alert(JSON.stringify(navigator);
+        alert(JSON.stringify(navigator));
         TTS.speak('hello, world!', function () {
           alert('success');
         }, function (reason) {
